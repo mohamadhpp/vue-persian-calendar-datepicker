@@ -144,11 +144,7 @@ Steps to contribute:
 
 For issues, questions, or feature requests, please open an issue on GitHub.
 
-Need help? Check the [Documentation](https://vue-persian-calendar.vercel.app/) or review the [Examples](./docs/guide/examples.md).
-
-# Changelog
-
-See [CHANGELOG.md](./CHANGELOG.md) for version history and updates.
+Need help? Check the [Documentation](https://vue-persian-calendar.vercel.app/) or review the [Examples](./docs/docs/README.md).
 
 # Credits
 
