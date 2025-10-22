@@ -42,14 +42,14 @@ footer: MIT Licensed | Copyright © 2024
 ### Installation
 
 ```bash
-npm install vue-persian-calendar
+npm install vue-persian-calendar-datepicker
 ```
 
 ### Basic Usage
 
 ```vue
 <script setup>
-import { PersianCalendar } from 'vue-persian-calendar'
+import { PersianCalendar } from 'vue-persian-calendar-datepicker'
 </script>
 
 <template>
@@ -62,7 +62,7 @@ import { PersianCalendar } from 'vue-persian-calendar'
 ```vue
 <script setup>
 import { ref } from 'vue'
-import { PersianDatePicker } from 'vue-persian-calendar'
+import { PersianDatePicker } from 'vue-persian-calendar-datepicker'
 
 const selectedDate = ref(null)
 </script>

@@ -40,14 +40,14 @@ View online demo: [Live CodePen Demo](https://codepen.io/mohamadhpp/pen/vELRmNa)
 ## Installation
 
 ```bash
-npm install vue-persian-calendar
+npm install vue-persian-calendar-datepicker
 ```
 
 ## Basic Usage
 
 ```vue
 <script setup>
-import { PersianCalendar, PersianDatePicker } from 'vue-persian-calendar'
+import { PersianCalendar, PersianDatePicker } from 'vue-persian-calendar-datepicker'
 </script>
 
 <template>
@@ -63,7 +63,7 @@ import { PersianCalendar, PersianDatePicker } from 'vue-persian-calendar'
 
 ```vue
 <script setup>
-import { PersianCalendar } from 'vue-persian-calendar'
+import { PersianCalendar } from 'vue-persian-calendar-datepicker'
 
 const handleSelectDate = (event) => {
   console.log(event.date)        // [1403, 6, 15]
@@ -84,7 +84,7 @@ const handleSelectDate = (event) => {
 ```vue
 <script setup>
 import { ref } from 'vue'
-import { PersianDatePicker } from 'vue-persian-calendar'
+import { PersianDatePicker } from 'vue-persian-calendar-datepicker'
 
 const selectedDate = ref(null)
 

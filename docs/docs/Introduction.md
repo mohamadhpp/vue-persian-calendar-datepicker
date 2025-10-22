@@ -72,7 +72,7 @@ Perfect for:
 ## Quick Installation
 
 ```bash
-npm install vue-persian-calendar
+npm install vue-persian-calendar-datepicker
 ```
 
 ## Basic Usage
@@ -81,7 +81,7 @@ npm install vue-persian-calendar
 
 ```vue
 <script setup>
-import { PersianCalendar } from 'vue-persian-calendar'
+import { PersianCalendar } from 'vue-persian-calendar-datepicker'
 </script>
 
 <template>
@@ -94,7 +94,7 @@ import { PersianCalendar } from 'vue-persian-calendar'
 ```vue
 <script setup>
 import { ref } from 'vue'
-import { PersianDatePicker } from 'vue-persian-calendar'
+import { PersianDatePicker } from 'vue-persian-calendar-datepicker'
 
 const selectedDate = ref(null)
 </script>
@@ -108,7 +108,7 @@ const selectedDate = ref(null)
 
 ```vue
 <script setup>
-import { PersianDatePicker } from 'vue-persian-calendar'
+import { PersianDatePicker } from 'vue-persian-calendar-datepicker'
 
 const startDate = [1403, 1, 1]
 const endDate = [1403, 12, 29]
@@ -127,7 +127,7 @@ const endDate = [1403, 12, 29]
 
 ```vue
 <script setup>
-import { PersianCalendar } from 'vue-persian-calendar'
+import { PersianCalendar } from 'vue-persian-calendar-datepicker'
 </script>
 
 <template>
@@ -146,7 +146,7 @@ import { PersianCalendar } from 'vue-persian-calendar'
 
 ```vue
 <script setup>
-import { PersianCalendar } from 'vue-persian-calendar'
+import { PersianCalendar } from 'vue-persian-calendar-datepicker'
 
 const lightColors = {
   background: '#f0f0f0',
@@ -281,7 +281,7 @@ Supported date formats for PersianDatePicker:
 ```vue
 <script setup>
 import { ref } from 'vue'
-import { PersianDatePicker } from 'vue-persian-calendar'
+import { PersianDatePicker } from 'vue-persian-calendar-datepicker'
 
 const today = new Date()
 const jy = today.getFullYear() + 1600
@@ -319,7 +319,7 @@ const checkOutDate = ref(null)
 ```vue
 <script setup>
 import { ref } from 'vue'
-import { PersianDatePicker } from 'vue-persian-calendar'
+import { PersianDatePicker } from 'vue-persian-calendar-datepicker'
 
 const datepicker = ref(null)
 
@@ -342,7 +342,7 @@ const convertDate = () => {
 ```vue
 <script setup>
 import { ref } from 'vue'
-import { PersianCalendar } from 'vue-persian-calendar'
+import { PersianCalendar } from 'vue-persian-calendar-datepicker'
 
 const calendar = ref(null)
 
@@ -385,7 +385,7 @@ Access calendar utilities directly with the `usePersianCalendar()` composable:
 
 ```vue
 <script setup>
-import { usePersianCalendar } from 'vue-persian-calendar'
+import { usePersianCalendar } from 'vue-persian-calendar-datepicker'
 
 const {
   today,
