@@ -2,7 +2,7 @@
     <img src="./docs/docs/.vuepress/public/logo.svg" alt="Vue Persian Calendar | Persian Date Picker" title="Vue Persian Calendar | Persian Date Picker" width="120" />
 </p>
 
-<h1 align="center">Vue Persian Calendar</h1>
+<h1 align="center">Vue Persian Calendar Date Picker</h1>
 
 <p align="center" width="300px">
 A comprehensive Vue 3 calendar and date picker component with support for Persian (Jalali), Hijri (Islamic), and Gregorian calendars
