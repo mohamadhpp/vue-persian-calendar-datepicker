@@ -1,0 +1,21 @@
+{
+    "name": "nuxt-persian-calendar-playground",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "nuxi dev",
+        "build": "nuxi build",
+        "generate": "nuxi generate",
+        "preview": "nuxi preview",
+        "postinstall": "nuxi prepare"
+    },
+    "dependencies": {
+        "nuxt": "^3.8.0",
+        "vue": "^3.3.8",
+        "vue-router": "^4.2.5"
+    },
+    "devDependencies": {
+        "@nuxt/devtools": "^1.0.0"
+    }
+}

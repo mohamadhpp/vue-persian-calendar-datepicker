@@ -1,0 +1,64 @@
+{
+    "name": "nir-persian-calendar",
+    "version": "1.0.0",
+    "description": "Persian calendar with Iran's official holidays and Iranian calendar events and Islamic and world events. And also support for Hijri and Gregorian dates in Vue",
+    "homepage": "https://github.com/mohamadhpp/NIRPersianCalendar#readme",
+    "main": "./dist/module.cjs",
+    "types": "./dist/types.d.ts",
+    "exports":
+    {
+        ".":
+        {
+            "import": "./dist/module.mjs",
+            "require": "./dist/module.cjs"
+        }
+    },
+    "files":
+    [
+        "dist"
+    ],
+    "scripts":
+    {
+        "prepack": "nuxt-module-build",
+        "dev": "nuxi dev playground",
+        "dev:build": "nuxi build playground",
+        "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
+    },
+    "keywords":
+    [
+        "nuxt",
+        "nuxt3",
+        "persian",
+        "calendar",
+        "jalali",
+        "iran",
+        "hijri",
+        "vue",
+        "vue3",
+        "datepicker",
+        "vee-validate",
+        "shamsi",
+        "date-picker",
+        "form-validation"
+    ],
+    "bugs":
+    {
+        "url": "https://github.com/mohamadhpp/NIRPersianCalendar/issues"
+    },
+    "repository":
+    {
+        "type": "git",
+        "url": "git+https://github.com/mohamadhpp/NIRPersianCalendar.git"
+    },
+    "license": "ISC",
+    "author": "Mohammad Hossein Pour",
+    "devDependencies":
+    {
+        "@nuxt/module-builder": "^1.0.2",
+        "@nuxt/kit": "^4.1.3",
+        "@nuxt/schema": "^4.1.3",
+        "nuxt": "^4.1.3",
+        "typescript": "^5.9.3",
+        "vue": "^3.5.22"
+    }
+}
