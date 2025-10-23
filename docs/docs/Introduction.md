@@ -367,11 +367,9 @@ const getCurrentDate = () => {
 
 ## Demo
 
-[![Demo](./.vuepress/public/images/demo.png)](https://codepen.io/mohamadhpp/pen/vELRmNa)
+[![Demo](./.vuepress/public/images/demo.png)]
 
-In the playground folder, there is a example to explain the package. The demo version is also available online in the link below.
-
-Show online demo: [Online Demo](https://codepen.io/mohamadhpp/pen/vELRmNa)
+In the playground folder, there is a example to explain the package.
 
 ## Browser Support
 

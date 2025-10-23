@@ -11,10 +11,6 @@ actions:
     link: https://github.com/mohamadhpp/vue-persian-calendar-datepicker
     type: secondary
 
-  - text: Online Demo
-    link: https://codepen.io/mohamadhpp/pen/vELRmNa
-    type: secondary
-
 features:
   - title: Multiple Calendar Systems
     details: Display dates in Persian (Jalali), Hijri (Islamic), and Gregorian calendars simultaneously with automatic conversions.

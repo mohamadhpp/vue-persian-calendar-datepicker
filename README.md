@@ -29,11 +29,9 @@ Visualize date selection directly on the calendar using mouse interaction or pro
 
 # Demo
 
-[![Vue Persian Calendar Demo](./docs/docs/.vuepress/public/images/demo.png)](https://codepen.io/mohamadhpp/pen/vELRmNa)
+[![Vue Persian Calendar Demo](./docs/docs/.vuepress/public/images/demo.png)]
 
 Try the component interactively. The demo showcases calendar selection, datepicker interaction, custom theming, and comprehensive event management.
-
-View online demo: [Live CodePen Demo](https://codepen.io/mohamadhpp/pen/vELRmNa)
 
 # Quick Start
 
