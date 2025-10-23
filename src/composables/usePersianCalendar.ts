@@ -1,6 +1,5 @@
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import type { Ref } from 'vue'
-import { useRuntimeConfig } from "nuxt/app"
 
 export interface PersianDate
 {
@@ -28,10 +27,17 @@ export interface CalendarEvents
     unofficialWorldEvents: string[]
 }
 
-export const usePersianCalendar = () =>
+interface HijriMonthsDays
 {
-    const config = useRuntimeConfig();
-    const options = config.public.persianCalendar as any;
+    start_year: number,
+    start_julian_day: number,
+    end_year: number,
+    end_julian_day: number,
+    days: Record<number, number[]>;
+}
+
+export const usePersianCalendar = (options: any = {}) =>
+{
 
     const today: Ref<number[]> = ref([1403, 1, 1]);
     const selectedDay: Ref<number[]> = ref([1403, 1, 1]);
@@ -329,7 +335,7 @@ export const usePersianCalendar = () =>
     ];
 
     // Hijri months data table for accurate conversion
-    const hijriMonthsDays = {
+    const hijriMonthsDays: HijriMonthsDays = {
         start_year: 1427,
         start_julian_day: 2192399,
         end_year: 1464,
@@ -447,6 +453,39 @@ export const usePersianCalendar = () =>
         return events
     }
 
+    const gregorianToJalali = (gYear: number, gMonth: number, gDay: number): number[] =>
+    {
+        let jy = gYear - 621;
+        let jd =
+            Math.floor(1461 * (gYear + 4800 + Math.floor((gMonth - 14) / 12))) / 4 +
+            Math.floor(367 * (gMonth - 2 - 12 * Math.floor((gMonth - 14) / 12))) / 12 -
+            Math.floor(3 * Math.floor((gYear + 4900 + Math.floor((gMonth - 14) / 12)) / 100)) / 4 +
+            gDay -
+            32075;
+
+        let l = jd - 1948440 + 1062;
+        let n = Math.floor((l - 1) / 10631);
+        l = l - 10631 * n + 355;
+
+        let jYear = 1021 * n + Math.floor((l > 186) ? (l - 186) / 365 : (l - 187) / 365);
+        let jDayOfYear = l - 365 * Math.floor((l > 186) ? (l - 186) / 365 : (l - 187) / 365);
+
+        if (jDayOfYear <= 0)
+        {
+            jYear--;
+            jDayOfYear += dayCountInMonth(jYear, 12);
+        }
+
+        let jMonth = 1;
+        while (jMonth <= 12 && jDayOfYear > dayCountInMonth(jYear, jMonth))
+        {
+            jDayOfYear -= dayCountInMonth(jYear, jMonth);
+            jMonth++;
+        }
+
+        return [jYear, jMonth, jDayOfYear];
+    }
+
     const jalaliToGregorian = (year: number, month: number, day: number): number[] =>
     {
         let gYear = (year <= 979) ? 621 : 1600;
@@ -522,7 +561,7 @@ export const usePersianCalendar = () =>
 
             for (let y in hijriMonthsDays.days)
             {
-                const yearData = hijriMonthsDays.days[y as keyof typeof hijriMonthsDays.days];
+                const yearData = hijriMonthsDays.days[y];
                 if (hijriDay > yearData[0])
                 {
                     hijriDay -= yearData[0];
@@ -724,6 +763,7 @@ export const usePersianCalendar = () =>
         getSelectedDayEvents,
 
         dayCountInMonth,
+        gregorianToJalali,
         jalaliToGregorian,
         jalaliToHijri,
         dayIndexOfWeek

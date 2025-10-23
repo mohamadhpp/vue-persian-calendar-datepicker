@@ -1,61 +1,68 @@
 {
     "name": "vue-persian-calendar-datepicker",
-    "version": "1.0.0",
-    "description": "Persian calendar with Iran's official holidays and Iranian calendar events and Islamic and world events. And also support for Hijri and Gregorian dates in Vue",
+    "version": "1.0.9",
+    "description": "A Vue 3 Persian calendar and datepicker with official Iranian holidays, Jalali, Hijri, and Gregorian date support.",
+    "author": "Mohammad Hossein Pour",
+    "license": "MIT",
     "homepage": "https://github.com/mohamadhpp/vue-persian-calendar-datepicker#readme",
-    "main": "./dist/module.mjs",
-    "type": "module",
-    "exports": {
-        ".": {
-            "import": "./dist/module.mjs",
-            "types": "./dist/runtime/plugin.d.ts"
-        }
-    },
-    "files": [
-        "dist"
-    ],
-    "scripts": {
-        "build": "tsup src/module.ts --format esm,cjs --dts",
-        "prepack": "nuxt-module-build build --failOnWarn=false || exit 0",
-        "dev": "nuxi dev playground",
-        "dev:build": "nuxi build playground",
-        "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground"
-    },
-    "keywords": [
-        "nuxt",
-        "nuxt3",
-        "persian",
-        "calendar",
-        "jalali",
-        "iran",
-        "hijri",
-        "vue",
-        "vue3",
-        "datepicker",
-        "vee-validate",
-        "shamsi",
-        "date-picker",
-        "form-validation"
-    ],
-    "bugs": {
-        "url": "https://github.com/mohamadhpp/vue-persian-calendar-datepicker/issues"
-    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/mohamadhpp/vue-persian-calendar-datepicker.git"
     },
-    "license": "ISC",
-    "author": "Mohammad Hossein Pour",
-    "devDependencies": {
-        "@nuxt/kit": "^4.1.3",
-        "@nuxt/module-builder": "^1.0.2",
-        "@nuxt/schema": "^4.1.3",
-        "nuxt": "^4.1.3",
-        "tsup": "^8.5.0",
-        "typescript": "^5.9.3",
-        "vue": "^3.5.22"
+    "bugs": {
+        "url": "https://github.com/mohamadhpp/vue-persian-calendar-datepicker/issues"
     },
-    "dependencies": {
-        "vue-tsc": "^3.1.1"
+    "keywords": [
+        "vue",
+        "vue3",
+        "persian",
+        "calendar",
+        "datepicker",
+        "jalali",
+        "shamsi",
+        "iran",
+        "hijri",
+        "date-picker"
+    ],
+    "type": "module",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/index.js"
+        },
+        "./components": {
+            "types": "./dist/components/index.d.ts",
+            "import": "./dist/components/index.mjs",
+            "require": "./dist/components/index.js"
+        },
+        "./composables": {
+            "types": "./dist/composables/index.d.ts",
+            "import": "./dist/composables/index.mjs",
+            "require": "./dist/composables/index.js"
+        }
+    },
+    "files": [
+        "dist",
+        "README.md"
+    ],
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite build --watch",
+        "prepack": "npm run build",
+        "prepublishOnly": "npm run build"
+    },
+    "peerDependencies": {
+        "vue": "^3.3.0"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^6.0.1",
+        "typescript": "^5.6.3",
+        "vite": "^7.1.12",
+        "vite-plugin-dts": "^4.5.4",
+        "vue": "^3.3.0"
     }
 }

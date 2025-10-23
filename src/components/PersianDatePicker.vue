@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue';
+import { usePersianCalendar } from '../composables';
 
 interface CalendarDay
 {
@@ -198,7 +199,7 @@ const wrapperRef = ref<HTMLElement | null>(null);
 const inputRef = ref<HTMLInputElement | null>(null);
 const popupPosition = ref<'bottom' | 'top'>('bottom');
 
-const dayNames = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج']
+const dayNames = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'];
 
 // Detect system theme
 const systemTheme = ref<'light' | 'dark'>('light');
