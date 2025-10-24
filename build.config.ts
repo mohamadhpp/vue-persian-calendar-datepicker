@@ -1,8 +1,10 @@
-import { defineBuildConfig } from 'unbuild'
-import vue from '@vitejs/plugin-vue'
+import { defineBuildConfig } from 'unbuild';
+import vue from '@vitejs/plugin-vue';
 
-export default defineBuildConfig({
-    entries: [
+export default defineBuildConfig(
+{
+    entries:
+    [
         {
             input: 'src/index',
             name: 'index',
@@ -18,9 +20,11 @@ export default defineBuildConfig({
     ],
     declaration: true,
     clean: true,
-    rollup: {
+    rollup:
+    {
         emitCJS: true,
-        dts: {
+        dts:
+        {
             respectExternal: true,
         },
         external: ['vue'],

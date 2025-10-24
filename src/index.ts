@@ -4,8 +4,10 @@ import PersianDatePicker from "./components/PersianDatePicker.vue";
 import { usePersianCalendar } from "./composables/usePersianCalendar";
 
 // Vue plugin
-export default {
-    install(app: App) {
+export default
+{
+    install(app: App)
+    {
         app.component("PersianCalendar", PersianCalendar);
         app.component("PersianDatePicker", PersianDatePicker);
     },

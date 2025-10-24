@@ -607,13 +607,19 @@ onMounted(() =>
                     </div>
                 </slot>
 
-                <slot
-                    name="hijri-events"
-                    :events="currentEvents.hijriEvents"
+                <slot name="hijri-events"
+                      :events="currentEvents.hijriEvents"
                 >
-                    <div v-if="currentEvents.hijriEvents.length" class="event-group">
-                        <span v-for="(event, i) in currentEvents.hijriEvents" :key="i">
-                            <slot name="hijri-event" :event="event" :index="i">
+                    <div v-if="currentEvents.hijriEvents.length"
+                         class="event-group"
+                    >
+                        <span v-for="(event, i) in currentEvents.hijriEvents"
+                              :key="i"
+                        >
+                            <slot name="hijri-event"
+                                  :event="event"
+                                  :index="i"
+                            >
                                 {{ event }}
                             </slot>
                         </span>
@@ -622,7 +628,10 @@ onMounted(() =>
             </div>
         </slot>
 
-        <slot name="footer" :selectedDay="selectedDay" :currentEvents="currentEvents"></slot>
+        <slot name="footer"
+              :selectedDay="selectedDay"
+              :currentEvents="currentEvents"
+        ></slot>
     </div>
 
 </template>
