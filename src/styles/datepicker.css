@@ -130,7 +130,7 @@
     border: 1px solid var(--popup-border);
     border-radius: 6px;
     padding: 0.8rem;
-    min-width: 280px;
+    min-width: 300px;
     left: 0;
     right: 0;
     box-shadow: 0 4px 12px var(--popup-shadow);
