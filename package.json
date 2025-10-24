@@ -1,6 +1,6 @@
 {
     "name": "vue-persian-calendar-datepicker",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "description": "A Vue 3 Persian calendar and datepicker with official Iranian holidays, Jalali, Hijri, and Gregorian date support.",
     "author": "Mohammad Hossein Pour",
     "license": "MIT",

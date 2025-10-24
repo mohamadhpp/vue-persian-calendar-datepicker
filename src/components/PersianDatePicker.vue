@@ -71,7 +71,7 @@ interface Props
     showTodayButton?: boolean
     showCloseButton?: boolean
     showOccasions?: boolean
-    theme?: 'light' | 'dark' | 'auto'
+    theme?: 'light' | 'dark' | 'auto' | ''
     lightColors?: ColorScheme
     darkColors?: ColorScheme
 }
@@ -171,16 +171,14 @@ const props = withDefaults(defineProps<Props>(),
     theme: 'light'
 });
 
-const emit = defineEmits<
-{
+const emit = defineEmits<{
     (e: 'update:modelValue', value: number[] | null): void
     (e: 'change', value: number[] | null): void
     (e: 'open'): void
     (e: 'close'): void
 }>();
 
-const
-{
+const {
     today,
     persianMonthName,
     dayCountInMonth,
@@ -206,34 +204,52 @@ const systemTheme = ref<'light' | 'dark'>('light');
 
 const detectSystemTheme = () =>
 {
-    if (typeof window !== 'undefined' && window.matchMedia)
+    if (typeof window !== 'undefined')
     {
-        systemTheme.value = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        // Check HTML tag for dark/light class first
+        const htmlElement = document.documentElement;
+
+        if (htmlElement.classList.contains('dark'))
+        {
+            systemTheme.value = 'dark';
+        }
+        else if (htmlElement.classList.contains('light'))
+        {
+            systemTheme.value = 'light';
+        }
+        else if (window.matchMedia)
+        {
+            // Fallback to prefers-color-scheme if no class is found
+            systemTheme.value = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
     }
 }
 
 const currentTheme = computed(() =>
 {
-    if (props.theme === 'auto')
+    if (!props.theme || props.theme === 'auto')
+    {
         return systemTheme.value;
+    }
+
     return props.theme;
 });
 
 const currentColors = computed((): ColorScheme =>
 {
-    const isLight = currentTheme.value === 'light'
-    const defaultColors = isLight ? defaultLightColors : defaultDarkColors
-    const customColors = isLight ? props.lightColors : props.darkColors
+    const isLight = currentTheme.value === 'light';
+    const defaultColors = isLight ? defaultLightColors : defaultDarkColors;
+    const customColors = isLight ? props.lightColors : props.darkColors;
 
     return {
         ...defaultColors,
         ...customColors
-    }
-})
+    };
+});
 
 const getCSSVariables = computed(() =>
 {
-    const colors = currentColors.value
+    const colors = currentColors.value;
     return {
         '--input-bg': colors.inputBg,
         '--input-text': colors.inputText,
@@ -270,8 +286,8 @@ const getCSSVariables = computed(() =>
         '--event-dot-color': colors.eventDotColor,
         '--footer-border-color': colors.footerBorderColor,
         '--footer-text': colors.footerText
-    }
-})
+    };
+});
 
 const initializeDate = () =>
 {
@@ -288,6 +304,7 @@ const initializeDate = () =>
         else if (typeof value === 'string')
         {
             const parts = value.split(/[\/\-]/).map(Number);
+
             if (parts.length === 3)
             {
                 selectedDate.value = parts;
@@ -296,7 +313,7 @@ const initializeDate = () =>
             }
         }
     }
-}
+};
 
 watch(() => props.modelValue, (value) =>
 {
@@ -304,9 +321,9 @@ watch(() => props.modelValue, (value) =>
     {
         if (Array.isArray(value))
         {
-            selectedDate.value = value
-            currentYear.value = value[0]
-            currentMonth.value = value[1]
+            selectedDate.value = value;
+            currentYear.value = value[0];
+            currentMonth.value = value[1];
         }
         else if (typeof value === 'string')
         {
@@ -351,7 +368,7 @@ const displayValue = computed(() =>
     }
 
     return `${year}/${month}/${day}`;
-})
+});
 
 const formattedSelectedDate = computed(() =>
 {
@@ -360,7 +377,7 @@ const formattedSelectedDate = computed(() =>
 
     const [year, month, day] = selectedDate.value;
     return `${day} ${persianMonthName(month)} ${year}`;
-})
+});
 
 const calendarDays = computed((): CalendarDay[] =>
 {
@@ -420,13 +437,14 @@ const calendarDays = computed((): CalendarDay[] =>
     }
 
     return days;
-})
+});
 
 const checkIfDisabled = (year: number, month: number, day: number): boolean =>
 {
     if (props.from)
     {
         const [fromY, fromM, fromD] = props.from;
+
         if (year < fromY || (year === fromY && month < fromM) || (year === fromY && month === fromM && day < fromD))
         {
             return true;
@@ -436,6 +454,7 @@ const checkIfDisabled = (year: number, month: number, day: number): boolean =>
     if (props.to)
     {
         const [toY, toM, toD] = props.to;
+
         if (year > toY || (year === toY && month > toM) || (year === toY && month === toM && day > toD))
         {
             return true;
@@ -443,7 +462,7 @@ const checkIfDisabled = (year: number, month: number, day: number): boolean =>
     }
 
     return false;
-}
+};
 
 const getDayClasses = (day: CalendarDay) =>
 {
@@ -457,7 +476,7 @@ const getDayClasses = (day: CalendarDay) =>
         'empty': day.day === 0,
         'has-event': day.events && (day.events.persianEvents.length > 0 || day.events.hijriEvents.length > 0)
     };
-}
+};
 
 const getDayTooltip = (day: CalendarDay): string =>
 {
@@ -476,7 +495,7 @@ const getDayTooltip = (day: CalendarDay): string =>
     }
 
     return events.join('\n');
-}
+};
 
 const handleInputClick = () =>
 {
@@ -484,7 +503,7 @@ const handleInputClick = () =>
         return;
 
     togglePopup();
-}
+};
 
 const togglePopup = () =>
 {
@@ -499,7 +518,7 @@ const togglePopup = () =>
     {
         openPopup();
     }
-}
+};
 
 const openPopup = () =>
 {
@@ -523,14 +542,14 @@ const openPopup = () =>
     nextTick(() =>
     {
         calculatePopupPosition();
-    })
-}
+    });
+};
 
 const closePopup = () =>
 {
     isOpen.value = false;
     emit('close');
-}
+};
 
 const calculatePopupPosition = () =>
 {
@@ -553,7 +572,7 @@ const calculatePopupPosition = () =>
 
         popupPosition.value = spaceBelow < 400 && spaceAbove > spaceBelow ? 'top' : 'bottom';
     }
-}
+};
 
 const selectDate = (day: CalendarDay) =>
 {
@@ -563,9 +582,8 @@ const selectDate = (day: CalendarDay) =>
     selectedDate.value = [currentYear.value, currentMonth.value, day.day];
     emit('update:modelValue', selectedDate.value);
     emit('change', selectedDate.value);
-
     closePopup();
-}
+};
 
 const selectToday = () =>
 {
@@ -575,16 +593,15 @@ const selectToday = () =>
 
     emit('update:modelValue', selectedDate.value);
     emit('change', selectedDate.value);
-
     closePopup();
-}
+};
 
 const clearDate = () =>
 {
     selectedDate.value = null;
     emit('update:modelValue', null);
     emit('change', null);
-}
+};
 
 const handleNextMonth = () =>
 {
@@ -597,7 +614,7 @@ const handleNextMonth = () =>
     {
         currentMonth.value++;
     }
-}
+};
 
 const handlePrevMonth = () =>
 {
@@ -610,27 +627,25 @@ const handlePrevMonth = () =>
     {
         currentMonth.value--;
     }
-}
+};
 
 const handleNextYear = () =>
 {
     currentYear.value++;
-}
+};
 
 const handlePrevYear = () =>
 {
     currentYear.value--;
-}
+};
 
 const onFocus = () =>
 {
     if (!props.readonly)
         return;
-}
+};
 
-const onBlur = () =>
-{
-}
+const onBlur = () => {};
 
 const setDate = (date: number[] | string | null) =>
 {
@@ -639,15 +654,14 @@ const setDate = (date: number[] | string | null) =>
         selectedDate.value = null;
         emit('update:modelValue', null);
         emit('change', null);
-
         return;
     }
 
     if (Array.isArray(date))
     {
-        selectedDate.value = date
-        currentYear.value = date[0]
-        currentMonth.value = date[1]
+        selectedDate.value = date;
+        currentYear.value = date[0];
+        currentMonth.value = date[1];
     }
     else if (typeof date === 'string')
     {
@@ -663,7 +677,7 @@ const setDate = (date: number[] | string | null) =>
 
     emit('update:modelValue', selectedDate.value);
     emit('change', selectedDate.value);
-}
+};
 
 const setDateFromGregorian = (gregorianDate: number[] | string) =>
 {
@@ -685,12 +699,12 @@ const setDateFromGregorian = (gregorianDate: number[] | string) =>
 
     const jalaliDate = gregorianToJalali(gYear, gMonth, gDay);
     setDate(jalaliDate);
-}
+};
 
 const getSelectedDate = (): number[] | null =>
 {
     return selectedDate.value;
-}
+};
 
 defineExpose({
     setDate,
@@ -700,7 +714,7 @@ defineExpose({
     clearDate,
     openPopup,
     closePopup
-})
+});
 
 const handleClickOutside = (event: MouseEvent) =>
 {
@@ -708,7 +722,7 @@ const handleClickOutside = (event: MouseEvent) =>
     {
         closePopup();
     }
-}
+};
 
 onMounted(() =>
 {
