@@ -86,7 +86,7 @@
 .datepicker-icon
 {
     position: absolute;
-    left: 0.6rem;
+    right: 0.6rem;
     color: var(--icon-color);
     cursor: pointer;
     display: flex;
@@ -102,7 +102,7 @@
 .datepicker-clear
 {
     position: absolute;
-    left: 2rem;
+    left: 0.6rem;
     background: none;
     border: none;
     color: var(--clear-color);
