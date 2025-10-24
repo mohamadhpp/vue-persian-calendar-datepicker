@@ -1,5 +1,5 @@
 {
-    "name": "nuxt-persian-calendar-playground",
+    "name": "nuxt-persian-calendar-example",
     "version": "1.0.0",
     "private": true,
     "type": "module",
@@ -13,6 +13,7 @@
     "dependencies": {
         "nuxt": "^3.8.0",
         "vue": "^3.3.8",
+        "vue-persian-calendar-datepicker": "^1.2.3",
         "vue-router": "^4.2.5"
     },
     "devDependencies": {

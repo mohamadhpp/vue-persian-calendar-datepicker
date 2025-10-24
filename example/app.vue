@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import { ref, computed } from 'vue';
+import { PersianDatePicker, PersianCalendar, usePersianCalendar } from "vue-persian-calendar-datepicker";
 
 const
 {
@@ -335,7 +336,7 @@ const handleFooterAction = () =>
 </script>
 
 <template>
-    <div class="playground-container">
+    <div class="example-container">
         <!-- Header -->
         <header class="header">
             <h1>
@@ -472,7 +473,7 @@ const handleFooterAction = () =>
                             <PersianDatePicker
                                 v-model="dateRange.start"
                                 placeholder="تاریخ شروع"
-                                :to="dateRange.end"
+                                :to="dateRange.end as number[]"
                             />
                         </div>
 
@@ -484,7 +485,7 @@ const handleFooterAction = () =>
                             <PersianDatePicker
                                 v-model="dateRange.end"
                                 placeholder="تاریخ پایان"
-                                :from="dateRange.start"
+                                :from="dateRange.start as number[]"
                             />
                         </div>
                     </div>
@@ -1057,7 +1058,7 @@ const {
 
 <style scoped>
 
-.playground-container
+.example-container
 {
     max-width: 1000px;
     margin: 0 auto;
@@ -1461,7 +1462,7 @@ button:hover,
 /* Responsive */
 @media (max-width: 768px)
 {
-    .playground-container
+    .example-container
     {
         padding: 1rem;
     }

@@ -335,7 +335,8 @@ export const usePersianCalendar = (options: any = {}) =>
     ];
 
     // Hijri months data table for accurate conversion
-    const hijriMonthsDays: HijriMonthsDays = {
+    const hijriMonthsDays: HijriMonthsDays =
+    {
         start_year: 1427,
         start_julian_day: 2192399,
         end_year: 1464,

@@ -1,7 +1,10 @@
 {
-    "compilerOptions": {
+    "compilerOptions":
+    {
         "target": "ESNext",
         "module": "ESNext",
+        "types": ["node"],
+        "baseUrl": ".",
         "moduleResolution": "Node",
         "declaration": true,
         "declarationDir": "dist/types",
@@ -11,5 +14,5 @@
         "skipLibCheck": true,
         "allowJs": true
     },
-    "include": ["src"]
+    "include": ["src", "vite.config.ts", "types"]
 }

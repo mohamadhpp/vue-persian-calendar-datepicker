@@ -369,7 +369,7 @@ const getCurrentDate = () => {
 
 [![Demo](./.vuepress/public/images/demo.png)]
 
-In the playground folder, there is a example to explain the package.
+In the example folder, there is a example to explain the package.
 
 ## Browser Support
 
